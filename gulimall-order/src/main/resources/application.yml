@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://#:3306/gulimall_oms
+    url: jdbc:mysql://192.168.64.130:3306/gulimall_oms
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       max-lifetime: 50000
@@ -11,14 +11,14 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: #nacos注册中心地址
+        server-addr: 192.168.64.130:8848
     sentinel:
       transport:
         dashboard: localhost:8080
   thymeleaf:
     cache: false
   redis:
-    host: 192.168.56.102
+    host: 192.168.64.130
   session:
     store-type: redis
 

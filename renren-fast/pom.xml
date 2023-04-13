@@ -110,11 +110,11 @@
 			<version>${oracle.version}</version>
 		</dependency>
 		 <!--mssql驱动-->
-		<dependency>
-			<groupId>com.microsoft.sqlserver</groupId>
-			<artifactId>sqljdbc4</artifactId>
-			<version>${mssql.version}</version>
-		</dependency>
+		<!--<dependency>-->
+		<!--	<groupId>com.microsoft.sqlserver</groupId>-->
+		<!--	<artifactId>sqljdbc4</artifactId>-->
+		<!--	<version>${mssql.version}</version>-->
+		<!--</dependency>-->
 		 <!--postgresql驱动-->
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -314,19 +314,16 @@
 
 	<repositories>
 		<repository>
-			<id>public</id>
-			<name>aliyun nexus</name>
-			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
+			<id>aliyunmaven</id>
+			<name>aliyun</name>
+			<url>https://maven.aliyun.com/repository/public</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
-			<id>public</id>
-			<name>aliyun nexus</name>
-			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+			<id>aliyunmaven</id>
+			<name>aliyun</name>
+			<url>https://maven.aliyun.com/repository/public</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>

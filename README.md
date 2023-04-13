@@ -189,14 +189,14 @@ gulimall
 - 修改本机的host文件，映射域名端口至Nginx地址
 
 ```
-192.168.56.102	gulimall.com
-192.168.56.102	search.gulimall.com
-192.168.56.102  item.gulimall.com
-192.168.56.102  auth.gulimall.com
-192.168.56.102  cart.gulimall.com
-192.168.56.102  order.gulimall.com
-192.168.56.102  member.gulimall.com
-192.168.56.102  seckill.gulimall.com
+192.168.64.130	gulimall.com
+192.168.64.130	search.gulimall.com
+192.168.64.130  item.gulimall.com
+192.168.64.130  auth.gulimall.com
+192.168.64.130  cart.gulimall.com
+192.168.64.130  order.gulimall.com
+192.168.64.130  member.gulimall.com
+192.168.64.130  seckill.gulimall.com
 以上ip换成自己Linux的ip地址
 ```
 

@@ -57,11 +57,11 @@ public class GulimallProductApplicationTests {
 
     @Test
     public void contextLoads() {
-//        BrandEntity brandEntity = new BrandEntity();
-//        brandEntity.setBrandId(1L);
-//        brandEntity.setDescript("华为手机的描述修改");
-//        brandEntity.setName("华为mate");
-//        brandService.updateById(brandEntity);
+       BrandEntity brandEntity = new BrandEntity();
+       brandEntity.setBrandId(2L);
+       brandEntity.setDescript("华为手机的描述修改");
+       brandEntity.setName("华为mate");
+       brandService.saveOrUpdate(brandEntity);
         List<BrandEntity> list = brandService.list(new QueryWrapper<BrandEntity>().eq("brand_id", 2L));
         list.forEach((x)-> System.out.println(x));
     }

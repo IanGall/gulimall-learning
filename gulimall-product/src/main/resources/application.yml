@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://#:3306/gulimall_pms
+    url: jdbc:mysql://192.168.64.130:3306/gulimall_pms
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       max-lifetime: 50000
@@ -11,11 +11,11 @@ spring:
   cloud:
       nacos:
         discovery:
-          server-addr: #nacos注册中心地址
-      # 文件上传秘钥
+          server-addr: 192.168.64.130:8848
+    # 文件上传秘钥
       alicloud:
-        access-key: #
-        secret-key: #
+        access-key: 1
+        secret-key: 1
         oss:
           endpoint: oss-cn-hangzhou.aliyuncs.com
       sentinel:
@@ -35,7 +35,7 @@ spring:
   thymeleaf:
     cache: false
   redis:
-    host: 192.168.56.102
+    host: 192.168.64.130
     port: 6379
   cache:
     type: redis
@@ -69,7 +69,6 @@ gulimall:
     corePoolSize: 10
     maxPoolSize: 20
     keepAliveTime: 300
-<<<<<<< HEAD
 management:
   endpoints:
     web:
@@ -78,5 +77,3 @@ management:
 feign:
   sentinel:
     enabled: true
-=======
->>>>>>> 9e4857d66f652e179bc55f579092d12e93ed463a
