@@ -60,16 +60,27 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
     @Override
     public List<CategoryEntity> listWithTree() {
         List<CategoryEntity> entities = baseMapper.selectList(null);
-        List<CategoryEntity> collect = entities.stream()
-                .filter(item->item.getParentCid()==0)
-                .map(menu->{
-                    menu.setChildren(getChildrens(menu,entities));
-                    return menu;
-                })
-                .sorted((menu1,menu2)->{
-                    return (menu1.getSort()==null?0:menu1.getSort()) - (menu2.getSort()==null?0:menu2.getSort());
-                })
-                .collect(Collectors.toList());
+        Map<Long, List<CategoryEntity>> parenIdToSubs = entities.stream()
+                .collect(Collectors.groupingBy(CategoryEntity::getParentCid));
+        List<CategoryEntity> collect = parenIdToSubs.get(0L);
+        Set<Long> parentIds = parenIdToSubs.keySet();
+        for (CategoryEntity entity : entities) {
+            Long parentId = entity.getCatId();
+            if (!parentIds.contains(parentId)) {
+                continue;
+            }
+            entity.setChildren(parenIdToSubs.get(parentId));
+        }
+        // List<CategoryEntity> collect = entities.stream()
+        //         .filter(item->item.getParentCid()==0)
+        //         .map(menu->{
+        //             menu.setChildren(getChildrens(menu,entities));
+        //             return menu;
+        //         })
+        //         .sorted((menu1,menu2)->{
+        //             return (menu1.getSort()==null?0:menu1.getSort()) - (menu2.getSort()==null?0:menu2.getSort());
+        //         })
+        //         .collect(Collectors.toList());
         return collect;
     }
 

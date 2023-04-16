@@ -40,10 +40,10 @@ public class CategoryController {
      * 查询所有分类并将查到分类通过树状结构组装起来
      */
     @RequestMapping("/list/tree")
-    public List<CategoryEntity> list(){
+    public R list(){
         List<CategoryEntity> categoryEntities = categoryService.listWithTree();
 
-        return categoryEntities;
+        return R.ok().setData(categoryEntities);
     }
 
     /**
@@ -64,7 +64,7 @@ public class CategoryController {
     public R info(@PathVariable("catId") Long catId){
 		CategoryEntity category = categoryService.getById(catId);
 
-        return R.ok().put("category", category);
+        return R.ok().setData(category);
     }
 
     /**
@@ -93,7 +93,7 @@ public class CategoryController {
     /**
      * 批量修改
      * @param categorys
-     * @return
+     // * @return
      */
     @RequestMapping("/updateNodes")
     public R update(@RequestBody CategoryEntity[] categorys){

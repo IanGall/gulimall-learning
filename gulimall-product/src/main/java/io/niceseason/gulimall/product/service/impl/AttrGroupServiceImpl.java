@@ -1,5 +1,7 @@
 package io.niceseason.gulimall.product.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import io.niceseason.gulimall.product.entity.AttrEntity;
 import io.niceseason.gulimall.product.service.AttrService;
 import io.niceseason.gulimall.product.vo.AttrGroupWithAttrVo;
@@ -42,7 +44,6 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
 
     @Override
     public PageUtils queryPage(Map<String, Object> params, long catelogId) {
-
         QueryWrapper<AttrGroupEntity> queryWrapper = new QueryWrapper<>();
         //select * from pms_attr_group where catelog_id=? and (attr_group_id=key or attr_group_name like %key%)
         if (catelogId!=0){

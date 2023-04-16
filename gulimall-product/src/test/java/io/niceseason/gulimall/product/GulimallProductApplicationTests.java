@@ -9,6 +9,7 @@ import io.niceseason.gulimall.product.dao.ProductAttrValueDao;
 import io.niceseason.gulimall.product.dao.SkuSaleAttrValueDao;
 import io.niceseason.gulimall.product.entity.BrandEntity;
 import io.niceseason.gulimall.product.service.BrandService;
+import io.niceseason.gulimall.product.service.CategoryService;
 import io.niceseason.gulimall.product.vo.SkuItemSaleAttrVo;
 import io.niceseason.gulimall.product.vo.SpuItemAttrGroupVo;
 import org.junit.Test;

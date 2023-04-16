@@ -52,7 +52,8 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
     @Override
     public PageUtils queryPage(Map<String, Object> params, long catelogId,String attrType) {
         //根据attrType进行查询，1规格参数，2销售属性
-        QueryWrapper<AttrEntity> attrEntityQueryWrapper = new QueryWrapper<AttrEntity>().eq("attr_type","base".equalsIgnoreCase(attrType)?1:0);
+        QueryWrapper<AttrEntity> attrEntityQueryWrapper = new QueryWrapper<AttrEntity>()
+                .eq("attr_type","base".equalsIgnoreCase(attrType)?1:0);
         //如果参数带有分类id，则按分类查询
         if (catelogId != 0) {
             attrEntityQueryWrapper.eq("catelog_id", catelogId);
@@ -71,15 +72,18 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
             AttrRespVo respVo = new AttrRespVo();
             BeanUtils.copyProperties(entity, respVo);
             //查询分类并设置分类名
-            CategoryEntity categoryEntity = categoryDao.selectOne(new QueryWrapper<CategoryEntity>().eq("cat_id", entity.getCatelogId()));
+            CategoryEntity categoryEntity = categoryDao.selectOne(new QueryWrapper<CategoryEntity>()
+                    .eq("cat_id", entity.getCatelogId()));
             respVo.setCatelogName(categoryEntity.getName());
             //如果是查询规格参数才查询设置分组名
             if ("base".equalsIgnoreCase(attrType)) {
                 //查询参数、分组关系
-                AttrAttrgroupRelationEntity attrAttrgroupRelationEntity = attrAttrgroupRelationDao.selectOne(new QueryWrapper<AttrAttrgroupRelationEntity>().eq("attr_id", entity.getAttrId()));
+                AttrAttrgroupRelationEntity attrAttrgroupRelationEntity = attrAttrgroupRelationDao
+                        .selectOne(new QueryWrapper<AttrAttrgroupRelationEntity>().eq("attr_id", entity.getAttrId()));
                 //如果分组id不为空。则查出分组名
                 if (attrAttrgroupRelationEntity != null && attrAttrgroupRelationEntity.getAttrGroupId() != null) {
-                    AttrGroupEntity attrGroupEntity = attrGroupDao.selectOne(new QueryWrapper<AttrGroupEntity>().eq("attr_group_id", attrAttrgroupRelationEntity.getAttrGroupId()));
+                    AttrGroupEntity attrGroupEntity = attrGroupDao.selectOne(new QueryWrapper<AttrGroupEntity>()
+                            .eq("attr_group_id", attrAttrgroupRelationEntity.getAttrGroupId()));
                     //设置分组名
                     respVo.setGroupName(attrGroupEntity.getAttrGroupName());
                 }
