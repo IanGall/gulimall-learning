@@ -13,26 +13,26 @@ spring:
   #注册到nacos并使用该配置中心
   application:
     name: renren-fast
-#  cloud:
-#    nacos:
-#      discovery:
-#        server-addr: 192.168.64.130:8848
-#      config:
-#        name: renren-fast
-#        server-addr: 192.168.64.130:8848
-#        namespace: 0a4ed40b-20a1-4f2c-a741-49279a883ffb
-#    sentinel:
-#      transport:
-#        dashboard: 192.168.64.130:8080
-#  zipkin:
-#    base-url: http://192.168.64.130:9411
-#    sender:
-#      type: web
-#    discovery-client-enabled: false
-#  #采样取值介于 0到1之间，1则表示全部收集
-#  sleuth:
-#    sampler:
-#      probability: 1
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.64.130:8848
+      config:
+        name: renren-fast
+        server-addr: 192.168.64.130:8848
+        namespace: 39fa4752-6b35-4eb2-862b-ed6a5d270275
+    sentinel:
+      transport:
+        dashboard: 192.168.64.130:8080
+  zipkin:
+    base-url: http://192.168.64.130:9411
+    sender:
+      type: web
+    discovery-client-enabled: false
+  #采样取值介于 0到1之间，1则表示全部收集
+  sleuth:
+    sampler:
+      probability: 1
 
 
 

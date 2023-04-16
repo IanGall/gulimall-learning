@@ -28,7 +28,7 @@ mybatis-plus:
     db-config:
       id-type: auto
 server:
-  port: 8000
+  port: 8300
 logging:
   level:
     io.niceseason.gulimall.member.dao: debug

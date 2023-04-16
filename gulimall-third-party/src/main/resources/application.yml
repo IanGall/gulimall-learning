@@ -13,10 +13,10 @@ spring:
       discovery:
         server-addr: 192.168.64.130:8848
     alicloud:
-      access-key: #
-      secret-key:  #
+      access-key: alicloud-access-key
+      secret-key: alicloud-secret-key
       oss:
-        bucket: gulimall-niceseason
+        bucket: gulimall-learning
         endpoint: oss-cn-hangzhou.aliyuncs.com
       # 发送短信接口的配置
       sms:
@@ -39,3 +39,14 @@ management:
     web:
       exposure:
         include: '*'
+
+
+biz:
+  oss:
+    # resources-url是带有bucket的
+    resources-url: http://192.168.64.130:9000/mall4cloud
+    type: 1
+    endpoint: http://192.168.64.130:9000
+    bucket: gulimall-learning
+    access-key-id: admin
+    access-key-secret: admin123456
