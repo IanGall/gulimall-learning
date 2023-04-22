@@ -261,7 +261,7 @@ html {
       display: none;
       box-shadow: 0 0 5px 0 #999; }
       .header_sous .header_ico .header_ko p {
-        background: url(../image/settleup-nogoods.png) no-repeat;
+        background: url(settleup-nogoods.png) no-repeat;
         font-size: 12px;
         padding-right: 30px;
         width: 89%;
@@ -509,7 +509,7 @@ html {
         font-size: 14px;
         text-align: center;
         color: #f60;
-        background: url(../image/list.icons.other.png) no-repeat; }
+        background: url(list.icons.other.png) no-repeat; }
       .JD_temai .JD_main .JD_left .bd {
         width: 100%;
         height: 122px;
@@ -583,7 +583,7 @@ html {
         font-size: 14px;
         text-align: center;
         color: #f60;
-        background: url(../image/list.icons.other.png) no-repeat; }
+        background: url(list.icons.other.png) no-repeat; }
       .JD_temai .JD_main .JD_right .bd {
         height: 135px;
         overflow: hidden;
@@ -1078,7 +1078,7 @@ html {
                     margin-top: 8px;
                     overflow: hidden;
                     vertical-align: top;
-                    background: url("../image/down-@1x.png") no-repeat; }
+                    background: url("image.png") no-repeat; }
             .JD_banner .JD_nav .JD_banner_main .JD_con_right .filter .filter_bottom .filter_bottom_right ul li {
               float: left;
               display: inline;
@@ -1527,13 +1527,13 @@ html {
         line-height: 42px;
         color: #444444; }
     .footer .footer_top ul li:first-child span {
-      background: url("../img/foot (2).png") no-repeat 0 0; }
+      background: url("img2).png") no-repeat 0 0; }
     .footer .footer_top ul li:nth-child(2) span {
-      background: url("../img/foot (2).png") no-repeat 0 -43px; }
+      background: url("img2).png") no-repeat 0 -43px; }
     .footer .footer_top ul li:nth-child(3) span {
-      background: url("../img/foot (2).png") no-repeat 0 -86px; }
+      background: url("img2).png") no-repeat 0 -86px; }
     .footer .footer_top ul li:nth-child(4) span {
-      background: url("../img/foot (2).png") no-repeat 0 -129px; }
+      background: url("img2).png") no-repeat 0 -129px; }
   .footer .footer_center {
     height: 200px;
     padding-top: 30px;
@@ -1557,7 +1557,7 @@ html {
       width: 200px;
       height: 150px;
       padding-left: 20px;
-      background: url("../img/foot (1).png") no-repeat 0 0; }
+      background: url("img1).png") no-repeat 0 0; }
       .footer .footer_center ol:last-child li:first-child {
         text-align: center;
         margin-bottom: 10px; }
@@ -1601,16 +1601,16 @@ html {
         height: 37px;
         float: left; }
       .footer .footer_foot ul li:first-child {
-        background: url("../img/foot (1).png") no-repeat 0 -145px; }
+        background: url("img1).png") no-repeat 0 -145px; }
       .footer .footer_foot ul li:nth-child(2) {
-        background: url("../img/foot (1).png") no-repeat -100px -145px; }
+        background: url("img1).png") no-repeat -100px -145px; }
       .footer .footer_foot ul li:nth-child(3) {
-        background: url("../img/foot (1).png") no-repeat 0 -181px; }
+        background: url("img1).png") no-repeat 0 -181px; }
       .footer .footer_foot ul li:nth-child(4) {
-        background: url("../img/foot (1).png") no-repeat -100px -181px; }
+        background: url("img1).png") no-repeat -100px -181px; }
       .footer .footer_foot ul li:nth-child(5) {
-        background: url("../img/foot (1).png") no-repeat 0 -215px; }
+        background: url("img1).png") no-repeat 0 -215px; }
       .footer .footer_foot ul li:nth-child(6) {
-        background: url("../img/foot (1).png") no-repeat -100px -215px; }
+        background: url("img1).png") no-repeat -100px -215px; }
 
 /*# sourceMappingURL=index.css.map */
