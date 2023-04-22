@@ -11,17 +11,17 @@ public class ThreadTests {
     private static ExecutorService service = Executors.newFixedThreadPool(5);
 
     public static void main(String[] args) throws Exception {
-//        runAsync();
-//        CompletableFuture<Long> future = supplyAsync();
-//        whenComplete();
-//        thenApply();
+        // runAsync();
+       // CompletableFuture<Long> future = supplyAsync();
+       // whenComplete();
+       // thenApply();
 //        handle();
 //        thenAccept();
-//        thenRun();
-//        thenCombine();
+       // thenRun();
+       thenCombine();
 //        thenAcceptBoth();
 //        applyToEither();
-        acceptEither();
+//         acceptEither();
         System.out.println("主线程执行完成");
     }
 
@@ -48,8 +48,8 @@ public class ThreadTests {
             }
             System.out.println("run end ...");
             return System.currentTimeMillis();
-        });
-
+        },service);
+        System.out.println(future.get());
         return future;
     }
 
@@ -81,22 +81,29 @@ public class ThreadTests {
             } catch (InterruptedException e) {
             }
             return 1L;
-        }, service).thenApply(res -> res * 2);
+        }, service).thenApplyAsync(res ->
+                {
+                    System.out.println("apply");
+                    return res * 2;
+                }
+                ,service);
         System.out.println(future.get());
     }
 
     private static void handle() throws Exception {
         CompletableFuture<Long> future = CompletableFuture.supplyAsync(() -> {
-            try {
-                System.out.println("run start ...");
-                TimeUnit.SECONDS.sleep(1);
-                Long i = 1000L / 0;
-                return 1L;
-            } catch (InterruptedException e) {
-                return 2L;
-            }
+            System.out.println("run start ...");
+            Long i = 1000L / 0;
+            return 1L;
+            // try {
+            // } catch (InterruptedException e) {
+            //     return 2L;
+            // }
         }, service).handle((t,u)->{
-            System.out.println(u.getMessage());
+            // System.out.println(u.getMessage());
+            if (t == null) {
+                t = 0L;
+            }
             return t * 2;
         });
         System.out.println(future.get());
@@ -112,9 +119,9 @@ public class ThreadTests {
             } catch (InterruptedException e) {
                 return 2L;
             }
-        }, service).thenAccept(res -> {
+        }, service).thenAcceptAsync(res -> {
             System.out.println(res);
-        });
+        },service);
 //        System.out.println(future.get());
     }
 
@@ -125,11 +132,11 @@ public class ThreadTests {
                 TimeUnit.SECONDS.sleep(1);
                 Long i = 1000L / 0;
                 return 1L;
-            } catch (InterruptedException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 return -1L;
             }
-        }, service).thenRun(() -> {
+        }, service).thenRunAsync(() -> {
             System.out.println("thenRun方法执行了，，");
         });
         System.out.println(future.get());
@@ -138,7 +145,11 @@ public class ThreadTests {
     private static void thenCombine() throws Exception {
         CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> "hello1");
         CompletableFuture<String> future2 = CompletableFuture.supplyAsync(() -> "hello2");
-        CompletableFuture<String> result = future1.thenCombine(future2, (t, u) -> t+" "+u);
+        CompletableFuture<String> result = future1.thenCombineAsync(future2, (t, u) -> {
+            String res = t + " " + u;
+            // System.out.println(res);
+            return res;
+        },service);
         System.out.println(result.get());
     }
 

@@ -170,35 +170,35 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 //        }
 //        return catalogMap;
 
-//        //缓存改写2：使用redis作为本地缓存
-//        ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
-//        String catalogJson = ops.get("catalogJson");
-//        if (StringUtils.isEmpty(catalogJson)) {
-//            Map<String, List<Catalog2Vo>> categoriesDb = getCategoriesDb();
-//            String toJSONString = JSON.toJSONString(categoriesDb);
-//            ops.set("catalogJson",toJSONString);
-//            return categoriesDb;
-//        }
-//        Map<String, List<Catalog2Vo>> listMap = JSON.parseObject(catalogJson, new TypeReference<Map<String, List<Catalog2Vo>>>() {});
-//        return listMap;
+       // //缓存改写2：使用redis作为本地缓存
+       // ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
+       // String catalogJson = ops.get("catalogJson");
+       // if (StringUtils.isEmpty(catalogJson)) {
+       //     Map<String, List<Catalog2Vo>> categoriesDb = getCategoriesDb();
+       //     String toJSONString = JSON.toJSONString(categoriesDb);
+       //     ops.set("catalogJson",toJSONString);
+       //     return categoriesDb;
+       // }
+       // Map<String, List<Catalog2Vo>> listMap = JSON.parseObject(catalogJson, new TypeReference<Map<String, List<Catalog2Vo>>>() {});
+       // return listMap;
 
         //缓存改写3：加锁解决缓存穿透问题
         ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
         String catalogJson = ops.get("catalogJson");
         if (StringUtils.isEmpty(catalogJson)) {
             System.out.println("缓存不命中，准备查询数据库。。。");
-//            synchronized (this) {
-//                String synCatalogJson = stringRedisTemplate.opsForValue().get("catalogJson");
-//                if (StringUtils.isEmpty(synCatalogJson)) {
+           synchronized (this) {
+               String synCatalogJson = stringRedisTemplate.opsForValue().get("catalogJson");
+               if (StringUtils.isEmpty(synCatalogJson)) {
                     Map<String, List<Catalog2Vo>> categoriesDb= getCategoriesDb();
                     String toJSONString = JSON.toJSONString(categoriesDb);
                     ops.set("catalogJson", toJSONString);
                     return categoriesDb;
-//                }else {
-//                    Map<String, List<Catalog2Vo>> listMap = JSON.parseObject(synCatalogJson, new TypeReference<Map<String, List<Catalog2Vo>>>() {});
-//                    return listMap;
-//                }
-//            }
+               }else {
+                   Map<String, List<Catalog2Vo>> listMap = JSON.parseObject(synCatalogJson, new TypeReference<Map<String, List<Catalog2Vo>>>() {});
+                   return listMap;
+               }
+           }
 
         }
         System.out.println("缓存命中。。。。");

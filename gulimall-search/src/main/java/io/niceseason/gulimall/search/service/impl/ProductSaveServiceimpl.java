@@ -30,7 +30,7 @@ public class ProductSaveServiceimpl implements ProductSaveService {
     public boolean saveProductAsIndices(List<SkuEsModel> skuEsModels) throws IOException {
         BulkRequest bulkRequest = new BulkRequest();
         for (SkuEsModel skuEsModel : skuEsModels) {
-            IndexRequest indexRequest = new IndexRequest("product");
+            IndexRequest indexRequest = new IndexRequest("product_guli");
             String s = JSON.toJSONString(skuEsModel);
             indexRequest.source(s, XContentType.JSON);
             bulkRequest.add(indexRequest);

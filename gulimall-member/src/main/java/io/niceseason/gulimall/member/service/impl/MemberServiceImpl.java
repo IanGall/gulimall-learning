@@ -117,13 +117,13 @@ public class MemberServiceImpl extends ServiceImpl<MemberDao, MemberEntity> impl
             uid.setGender("m".equals(gender)?0:1);
             uid.setHeader(profile_image_url);
             uid.setAccessToken(socialUser.getAccess_token());
-            uid.setUid(socialUser.getUid());
+            uid.setSocialUid(socialUser.getUid());
             uid.setExpiresIn(socialUser.getExpires_in());
             this.save(uid);
         }else {
             //2 否则更新令牌等信息并返回
             uid.setAccessToken(socialUser.getAccess_token());
-            uid.setUid(socialUser.getUid());
+            uid.setSocialUid(socialUser.getUid());
             uid.setExpiresIn(socialUser.getExpires_in());
             this.updateById(uid);
         }

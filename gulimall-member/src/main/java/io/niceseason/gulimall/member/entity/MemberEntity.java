@@ -9,7 +9,7 @@ import lombok.Data;
 
 /**
  * 会员
- * 
+ *
  * @author Ethan
  * @email hongshengmo@163.com
  * @date 2020-05-27 23:01:00
@@ -97,7 +97,7 @@ public class MemberEntity implements Serializable {
 	/**
 	 * 社交登录UID
 	 */
-	private String uid;
+	private String socialUid;
 
 	/**
 	 * 社交登录TOKEN

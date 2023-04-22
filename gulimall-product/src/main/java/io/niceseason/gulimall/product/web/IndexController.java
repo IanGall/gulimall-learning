@@ -6,7 +6,6 @@ import io.niceseason.gulimall.product.feign.SeckillFeignService;
 import io.niceseason.gulimall.product.service.CategoryService;
 import io.niceseason.gulimall.product.vo.Catalog2Vo;
 import org.redisson.api.*;
-import org.redisson.client.RedisClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
@@ -44,7 +43,7 @@ public class IndexController {
     @GetMapping("index/json/catalog.json")
     @ResponseBody
     public Map<String, List<Catalog2Vo>> getCategoryMap() {
-        return categoryService.getCatalogJsonDbWithSpringCache();
+        return categoryService.getCatalogJsonDbWithRedisson();
     }
 
     @GetMapping("/read")
